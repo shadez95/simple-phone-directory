@@ -22,7 +22,7 @@ function FilteredList({ directory, searchText }: Props) {
   return (
     <Fragment>
       {filtered.map((contact) => (
-        <div className="box-content p-4 border-2 rounded-xl" key={contact._id}>
+        <div className="box-content p-4 border-2 rounded-xl text-left" key={contact._id}>
           <p>Name: {contact.name}</p>
           <p>Number: {contact.phone}</p>
           <p>Company: {contact.company}</p>

@@ -34,9 +34,9 @@ function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
         </p>
 
         <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {searchValue === '' ? (directory.map((contact) => (
-              <div className="box-content p-4 border-2 rounded-xl" key={contact._id}>
+              <div className="box-content p-4 border-2 rounded-xl text-left" key={contact._id}>
                 <p>Name: {contact.name}</p>
                 <p>Number: {contact.phone}</p>
                 <p>Company: {contact.company}</p>
