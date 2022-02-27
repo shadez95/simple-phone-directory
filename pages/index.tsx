@@ -27,7 +27,7 @@ function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
           <input
             className="border border-slate-300 py-2 px-2 max-w-sm mx-auto rounded-xl shadow-lg"
             type="search"
-            placeholder="search for a name"
+            placeholder="search for something"
             value={searchValue}
             onChange={handleChange}
           />
