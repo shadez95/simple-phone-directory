@@ -2,8 +2,8 @@ import { useState } from 'react';
 import type { NextPage, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 
-import FilteredList from '../components/FilteredList';
-import directory from '../directory.json';
+import FilteredList from '@/components/FilteredList';
+import directory from '../../directory.json';
 
 function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
