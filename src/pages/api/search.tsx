@@ -1,4 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { search } from 'ss-search';
+
+import { Contact } from '@/types';
+
+import directory from '../../../directory.json';
 
 // const attributes = [
 //     'cn', 'dn', 'sn', 'givenName', 'displayName', 'mail', 'department',
@@ -16,6 +21,23 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 //         process.exit(1);
 //     });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export function filterContacts(searchText: string): Contact[] {
+  const searchKeys = ['name', 'email', 'phone', 'company'];
+  const results = search(directory, searchKeys, searchText);
+  return results as Contact[];
+}
 
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    const { text } = req.query;
+    let searchText = '';
+    if (text.length > 1) {
+      const arrText = text as string[];
+      searchText = arrText.join(' ');
+    } else {
+      searchText = text as string;
+    }
+    const results = filterContacts(searchText);
+    res.status(200).json(results);
+  }
 };

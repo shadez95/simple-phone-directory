@@ -2,8 +2,8 @@ import { useState } from 'react';
 import type { NextPage, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 
-import FilteredList from '@/components/FilteredList';
 import directory from '../../directory.json';
+import FilteredList from '@/components/FilteredList';
 
 function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
@@ -43,7 +43,7 @@ function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
                 <p>Email: {contact.email}</p>
               </div>
             ))) : (
-              <FilteredList searchText={searchValue} directory={directory} />
+              <FilteredList searchText={searchValue}/>
             )
           }
           </div>
