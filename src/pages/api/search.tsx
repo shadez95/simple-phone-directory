@@ -28,16 +28,25 @@ export function filterContacts(searchText: string): Contact[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'GET') {
-    const { text } = req.query;
-    let searchText = '';
-    if (typeof text !== 'string') {
-      const arrText = text as string[];
-      searchText = arrText.join(' ');
-    } else {
-      searchText = text as string;
-    }
-    const results = filterContacts(searchText);
-    res.status(200).json(results);
+  switch(req.method) {
+    case "HEAD": res.status(200).send({}); break;
+    case "GET":
+      const { text } = req.query;
+      console.log(`text = ${text}`);
+      if (text === '' || text === undefined) {
+        res.status(400).send({});
+        break;
+      }
+      let searchText = '';
+      if (typeof text !== 'string') {
+        const arrText = text as string[];
+        searchText = arrText.join(' ');
+      } else {
+        searchText = text as string;
+      }
+      const results = filterContacts(searchText);
+      res.status(200).json(results);
+      break;
+    default: res.status(501).send({});
   }
 };
