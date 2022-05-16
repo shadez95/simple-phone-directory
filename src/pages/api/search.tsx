@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     const { text } = req.query;
     let searchText = '';
-    if (text.length > 1) {
+    if (typeof text !== 'string') {
       const arrText = text as string[];
       searchText = arrText.join(' ');
     } else {
