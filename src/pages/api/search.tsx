@@ -22,7 +22,7 @@ import directory from '../../../directory.json';
 //     });
 
 export function filterContacts(searchText: string): Contact[] {
-  const searchKeys = ['name', 'email', 'phone', 'company'];
+  const searchKeys = ['name', 'email', 'phone', 'department'];
   const results = search(directory, searchKeys, searchText);
   return results as Contact[];
 }

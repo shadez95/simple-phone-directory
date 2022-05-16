@@ -39,7 +39,7 @@ function Home({ directory }: InferGetStaticPropsType<typeof getStaticProps>) {
               <div className="box-content p-4 border-2 rounded-xl text-left" key={contact._id}>
                 <p>Name: {contact.name}</p>
                 <p>Number: {contact.phone}</p>
-                <p>Company: {contact.company}</p>
+                <p>Company: {contact.department}</p>
                 <p>Email: {contact.email}</p>
               </div>
             ))) : (
